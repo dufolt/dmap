@@ -1,1 +1,1 @@
-all:; solc --optimize --pretty-json --combined-json bin,abi src/dmap.sol > dst/dmap.json
+all:; solc --optimize --pretty-json --combined-json bin,abi dmap.sol > dmap.json
