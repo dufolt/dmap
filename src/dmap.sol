@@ -1,6 +1,6 @@
 pragma solidity ^0.5.10;
 
-contract dmap {
+contract DMap {
     address owner;
     mapping(bytes32=>bytes32) values;
 
