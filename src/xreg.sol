@@ -13,7 +13,7 @@ contract xreg {
     }
     function newChild(bytes32 name) public returns (DMap) {
         DMap map = new DMap();
-        register(name, bytes32(bytes20(address( x ))));
+        register(name, bytes32(bytes20(address( map ))));
         map.setOwner(msg.sender);
     }
     function register(bytes32 key, bytes32 val) public {
