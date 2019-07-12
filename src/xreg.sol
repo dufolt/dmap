@@ -15,6 +15,7 @@ contract xreg {
         DMap map = new DMap();
         register(name, bytes32(bytes20(address( map ))));
         map.setOwner(msg.sender);
+        return map;
     }
     function register(bytes32 key, bytes32 val) public {
         assert(x.getValue(key) == 0x0);
