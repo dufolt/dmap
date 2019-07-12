@@ -10,7 +10,6 @@ contract xreg {
     DMap public x;
     constructor() public {
         x = new DMap();
-        x.setValue(0x0, bytes32(bytes20(address( x ))));
     }
     function newChild(bytes32 name) public returns (DMap) {
         DMap map = new DMap();
