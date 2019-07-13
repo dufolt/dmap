@@ -36,7 +36,7 @@ cli
     .command("abi <type>")
     .description("Print the ABI for a type known to dmap")
     .action((typename) => {
-        var types = require("./dmap-abi");
+        var types = require("./dmap-types");
         var t = types[typename];
         if (t != undefined) {
             console.log(JSON.stringify(JSON.parse(t.abi)));
