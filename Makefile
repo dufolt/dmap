@@ -1,10 +1,9 @@
 all:; \
-	cp src/context.json dist/context.json; \
-	cd src/sol; \
+	cd sol; \
 		solc \
 		--optimize \
 		--pretty-json \
 		--combined-json bin,bin-runtime,abi \
 		--overwrite \
-		-o ../../dist \
+		-o ../evm \
 		{dmap,xreg}.sol
