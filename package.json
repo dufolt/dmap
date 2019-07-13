@@ -1,8 +1,8 @@
 {
   "name": "dmap-cmd",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
-  "main": "dmap",
+  "main": "dmap-lib",
   "bin": {
     "dmap": "./dmap-cmd.js"
   },
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "keybase://team/dmap/dmap-cmd"
+    "url": "keybase://team/dmap/dmap"
   },
   "keywords": [
     "ethereum",
