@@ -2,11 +2,7 @@ let Web3 = require("web3");
 
 let constants = require("./dmap-constants.js");
 
-var context = constants.context;
-
-exports.addContext = function(userContext) {
-    context = {...context, ...userContext};
-}
+exports.context = constants.context;
 
 exports.dPathRegex = /^(\.[a-z0-9-]{1,32})*\.$/;
 exports.isDPath = function(path) {
@@ -24,7 +20,7 @@ exports.get = function(path, log) {
     if (path[path.length-1] != ".") {
         return Promise.reject("Path for `get` must end with a dot (.)");
     }
-    return exports.walk(context.relative, path, log)
+    return exports.walk(exports.context.relative, path, log)
         .catch((err) => {
             console.log(err);
         });
@@ -40,7 +36,7 @@ exports.walk = function(root, path, log) {
     }
     log(`step ${path}`)
     if( root == undefined || root == "" || root == "0x0") {
-        root = context.relative;
+        root = exports.context.relative;
     }
     var register = root;
     let result = [];
@@ -67,9 +63,7 @@ exports.walk = function(root, path, log) {
             .then((result) => {
                 log(`  -> ${result}`);
                 if (rest == "") {
-                    // open paths unimplemented; blocked by regex
                     return Promise.reject("UNREACHABLE");
-                    // return Promise.resolve(`DONE ${register}.${word}`);
                 }
                 register = result.substring(0, 42);
                 return step(rest);
@@ -79,7 +73,7 @@ exports.walk = function(root, path, log) {
 }
 
 exports.getValue = function(map, key) {
-    var web3 = new Web3(context.bootstrap);
+    var web3 = new Web3(exports.context.bootstrap);
     var dmap = new web3.eth.Contract(constants.abi.dmap, map);
     return dmap.methods
         .getValue(web3.utils.asciiToHex(key))

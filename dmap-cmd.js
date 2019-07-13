@@ -3,23 +3,30 @@
 var cli = require('commander');
 var dmap = require('./dmap-lib.js');
 
+function processOptions(options) {
+    if (options.relative) {
+        dmap.context.relative = options.relative;
+    }
+}
+
 cli
     .arguments("[path]")
     .option("-r, --relative <addr>", "execute relative to given address")
 cli
     .command("get <path>")
     .description("get the value at the given dmap path")
-    .action((path, cmd) => {
-        dmap.get(path, console.log)
-            .then((ret) => {
-                console.log(ret);
-                process.exit(0);
-            })
+    .action((path, options) => {
+        var logger = () => {};
+        processOptions(options.parent);
+        dmap.get(path, logger)
+            .then(console.log)
+            .then(process.exit);
     });
 cli
     .command("walk <path>")
     .description("traverse the given path, logging steps")
-    .action((path, cmd) => {
+    .action((path, options) => {
+        processOptions(options.parent);
         dmap.walk("", path, console.log)
             .then((ret) => {
                 process.exit(0);
