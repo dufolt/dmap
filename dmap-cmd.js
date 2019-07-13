@@ -10,7 +10,6 @@ function processOptions(options) {
 }
 
 cli
-    .usage("dmap")
     .option("-r, --relative <addr>", "execute relative to given address")
 cli
     .command("[path]")
