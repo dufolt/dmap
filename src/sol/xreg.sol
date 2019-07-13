@@ -4,7 +4,7 @@
 
 pragma solidity ^0.5.10;
 
-import "src/dmap.sol";
+import "dmap.sol";
 
 contract xreg {
     DMap public x;
