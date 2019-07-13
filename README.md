@@ -39,14 +39,22 @@ DONE 0x20d20820f5d4d310281533cd9154c1be22d6e195
 Example paths
 ---
 
+Currently working
 ```
 .            the dmap
 .b.          owned by Mr. B's
+.x.          xreg, the worst registry
+.x.          implicit locks made explicit
+.x.b.        `.b.`
+```
+`dpath` musings
+```
 .b^          Mr. B's
 .x:          xreg, the worst registry
 :x:          implicit locks made explicit
-.x:b         `.b`
+.x:b         `.b` "open" value
 ```
+
 
 Dev Install
 ---
