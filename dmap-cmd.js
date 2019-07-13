@@ -10,8 +10,11 @@ function processOptions(options) {
 }
 
 cli
-    .arguments("[path]")
+    .usage("dmap")
     .option("-r, --relative <addr>", "execute relative to given address")
+cli
+    .command("[path]")
+    .description("`get [path]`")
 cli
     .command("get <path>")
     .description("get the value at the given dmap path")
@@ -20,7 +23,8 @@ cli
         processOptions(options.parent);
         dmap.get(path, logger)
             .then(console.log)
-            .then(process.exit);
+            .then(process.exit)
+            .catch((err) => { console.log(err); });
     });
 cli
     .command("walk <path>")
@@ -31,7 +35,9 @@ cli
             .then((ret) => {
                 process.exit(0);
             })
+            .catch((err) => {console.log(err); });
     })
+/*
 cli
     .command("abi <type>")
     .description("Print the ABI for a type known to dmap")
@@ -42,6 +48,7 @@ cli
             console.log(JSON.stringify(JSON.parse(t.abi)));
         }
     });
+*/
 
 cli.parse(process.argv);
 
@@ -51,6 +58,7 @@ if (cli.args.length == 1) {
     dmap.get(cli.args[0], logger)
         .then(console.log)
         .then(process.exit)
+        .catch((err) => {console.log(err); });
 }
 
 if (cli.args.length == 0) {

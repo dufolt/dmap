@@ -15,10 +15,13 @@ exports.get = function(path, log) {
     }
     log(`get ${path}`)
     if( !exports.isDPath(path) ) {
-        return Promise.reject("Invalid path");
-    }
-    if (path[path.length-1] != ".") {
-        return Promise.reject("Path for `get` must end with a dot (.)");
+        let mustStart = path[0] == "."
+                      ? ""
+                      : "Path must start with a dot (.).";
+        let mustEnd = path[path.length-1] == "."
+                    ? ""
+                    : "Path must end with a dot (.).";
+        return Promise.reject(`Invalid path. ${mustStart} ${mustEnd}`);
     }
     return exports.walk(exports.context.relative, path, log)
         .catch((err) => {
