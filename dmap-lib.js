@@ -2,7 +2,7 @@ let Web3 = require("web3");
 
 let constants = require("./dmap-constants.js");
 
-var context = constants.defaultContext;
+var context = constants.context;
 
 exports.addContext = function(userContext) {
     context = {...context, ...userContext};
