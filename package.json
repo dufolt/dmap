@@ -1,0 +1,28 @@
+{
+  "name": "dmap-cmd",
+  "version": "0.0.7",
+  "description": "",
+  "main": "dmap",
+  "bin": {
+    "dmap": "./dmap-cmd.js"
+  },
+  "dependencies": {
+    "commander": "^2.20.0",
+    "web3": "^1.0.0-beta.55"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "keybase://team/dmap/dmap-cmd"
+  },
+  "keywords": [
+    "ethereum",
+    "dapp",
+    "dns"
+  ],
+  "author": "",
+  "license": "ISC"
+}
