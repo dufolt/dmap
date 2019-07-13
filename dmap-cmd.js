@@ -45,7 +45,15 @@ cli
 
 cli.parse(process.argv);
 
-if (cli.args.length == 0 || cli.args.length == 1) {
+if (cli.args.length == 1) {
+    processOptions(cli.options);
+    var logger = () => {};
+    dmap.get(cli.args[0], logger)
+        .then(console.log)
+        .then(process.exit)
+}
+
+if (cli.args.length == 0) {
     cli.help();
     process.exit(0);
 }
