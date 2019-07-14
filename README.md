@@ -1,11 +1,11 @@
 `dmap`
 ===
 
-* `dmap` is a universal namespace defined by a subset of the Ethereum chain state.
-* `dmap` is a utility for evaluating `dpath`s.
-* `dpath` is a mini-language for traversing the dmap. It is future-proof and extensible.
+* `dmap` is a universal namespace
+* `dmap` is defined by a subset of the Ethereum chain state
+* `dpath` is the path format and mini-language for traversing the dmap
+* `dpath` is future-proof and extensible
 
-This repo contains a reference implementation of `dmap` in JavaScript.
 
 Use Cases
 ---
@@ -17,7 +17,6 @@ Use Cases
 * Key signing / WoT bootstrapping
 
 Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
-
 
 Install
 ---
@@ -66,8 +65,12 @@ Future
 ```
 
 
-Development
+Development Notes
 ---
+
+* `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk(path)` helper methods second.
+* We expect other implementations to be forks of Ethereum light clients optimized for dmap queries.
+
 ```
 git clone https://github.com/dufolt/dmap
 cd dmap
@@ -80,7 +83,7 @@ cd dmap
 make
 ```
 
-* `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk(path)` helper methods second.
+
 
 Agenda
 ---
