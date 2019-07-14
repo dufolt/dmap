@@ -6,4 +6,4 @@ all:; \
 		--combined-json bin,bin-runtime,abi \
 		--overwrite \
 		-o ../evm \
-		{dmap,xreg}.sol
+		{dmap,xreg,wrap,quickstart}.sol
