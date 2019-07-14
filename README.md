@@ -4,9 +4,20 @@
 * `dmap` is a universal namespace.
 * `dmap` is a utility for evaluating `dpath`s.
 * `dpath` is a mini-language for traversing a subset of the Ethereum chain state. It is future-proof and extensible.
-* `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk(path)` helper methods second.
 
 This repo contains a reference implementation of `dmap` in JavaScript.
+
+Use Cases
+---
+
+`dmap` should be immediately useful for:
+
+* Package distribution (verification)
+* GUI distribution (verification)
+* Key signing / WoT bootstrapping
+
+Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
+
 
 Install
 ---
@@ -35,35 +46,23 @@ step -r 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6 .
 DONE 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6
 ```
 
-Use Cases
+Example paths to study
 ---
 
-`dmap` should be immediately useful for:
-
-* Package Distribution
-* GUI distribution
-* Key Signing / WoT bootstrapping
-
-Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
-
-Example paths
----
-
-Currently working
+Active
 ```
 .             the dmap
 .d.           the dmap
 .x.           xreg, the worst registry (is DMap, owner is XReg)
 .x.ample.     example paths for docs
+.x.dmap.      the dmap
 ```
 
 Future
 ```
-.b.            rooted by Mr. B's
-.b^            Mr. B's
-
 :x:ample:definitly-locked  
 :x:ample.possibly-mutable 
+.x.ample#ipld
 ```
 
 
@@ -81,10 +80,12 @@ cd dmap
 make
 ```
 
+* `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk(path)` helper methods second.
+
 Agenda
 ---
 
-* `dmap abi` by address
+* `dmap type-info` by path, by address
 * `.` rune
 * `:` rune
 * source bootstrap (git hash on chain, `dmap update` verifies it before linking)
