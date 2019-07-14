@@ -1,11 +1,18 @@
 `dmap`
 ===
 
-* `dmap` is a universal namespace
-* `dmap` is defined by a subset of the Ethereum chain state
-* `dpath` is the path format and mini-language for traversing the dmap
-* `dpath` is future-proof and extensible
+* `dmap` is a universal namespace defined by part of the Ethereum chain state.
+* `dpath` is the path format and mini-language used by `dmap`.
+* `dmap` maps `dpath`s to 32-byte words.
+* `dpath` is future-proof and extensible.
 
+Try it now:
+---
+```
+> npm install -g dmap-cmd
+> dmap .x.ample.
+> dmap walk .x.ample.
+```
 
 Use Cases
 ---
@@ -17,13 +24,6 @@ Use Cases
 * Key signing / WoT bootstrapping
 
 Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
-
-Install
----
-```
-npm install -g dmap-cmd
-```
-*(Version 0.0.x has an unstable API. Version 0.1.0 will have a stable `get` and `walk` API for paths containing only `.` runes (separators).)*
 
 Examples
 ---
@@ -68,6 +68,7 @@ Future
 Development Notes
 ---
 
+* Version 0.0.x has an unstable API. Version 0.1.0 will have a stable `get` and `walk` API for paths containing only `.` runes (separators).
 * `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk(path)` helper methods second.
 * We expect other implementations to be forks of Ethereum light clients optimized for dmap queries.
 
