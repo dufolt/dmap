@@ -20,7 +20,7 @@ Usage
 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d
 
 > dmap .x.ample.
-0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d
+0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6
 
 > dmap walk .x.ample.
 walk .x.ample.
