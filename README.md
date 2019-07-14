@@ -9,9 +9,9 @@
 Try it now:
 ---
 ```
-> npm install -g dmap-cmd
-> dmap .x.ample.
-> dmap walk .x.ample.
+npm install -g dmap-cmd
+dmap .x.ample.
+dmap walk .x.ample.
 ```
 
 Use Cases
