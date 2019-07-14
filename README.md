@@ -1,20 +1,82 @@
 `dmap`
 ===
 
-* `dmap` is a universal namespace
-* `dmap` has a well-defined command-line query interface
-* the basic function of `dmap` is to execute `dmap <dpath>`
+`dmap` is a universal namespace defined in terms of the Ethereum chain state.
+`dpath` is the path format and traversal language used by `dmap`. It is designed to be future-proof and extensible.
+`dmap` develops in an ad-hoc manner over time, and knowledge about the structure of the dmap makes its way into clients as optimizations and sometimes language extensions after real use cases motivate them.
 
-* `dmap` is defined in terms of the Ethereum chain state
-* `dmap` develops in an ad-hoc manner
-* the `dmap` program is optimized around the resulting universal state
+This repo contains a reference implementation of `dmap` in JavaScript.
 
-* `dpath` is the mini-language for traversing the dmap.
-* `dpath` is extensible and future-proof
-* `dpath` incorporates knowledge about the structure of the dmap after it develops
+Install
+---
+```
+npm install -g dmap-cmd
+```
 
-agenda
+Usage
+---
+```
+> dmap .x.
+0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d
+
+> dmap get .x.
+0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d
+
+> dmap .x.dmap.
+0x20d20820f5d4d310281533cd9154c1be22d6e195
+
+> dmap walk .x.dmap.
+walk .x.dmap.
+step .x.dmap.
+step -r 0x20d20820f5d4D310281533CD9154C1bE22D6e195 .x.dmap.
+  -> 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d000000000000000000000000
+step -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .dmap.
+  -> 0x20d20820f5d4d310281533cd9154c1be22d6e195000000000000000000000000
+step -r 0x20d20820f5d4d310281533cd9154c1be22d6e195 .
+DONE 0x20d20820f5d4d310281533cd9154c1be22d6e195
+```
+
+Example paths
 ---
 
+Currently working
+```
+.            the dmap
+.b.          owned by Mr. B's
+.x.          xreg, the worst registry
+.x.          implicit locks made explicit
+.x.b.        `.b.`
+```
+`dpath` musings
+```
+.b^          Mr. B's
+.x:          xreg, the worst registry
+:x:          implicit locks made explicit
+.x:b         `.b` "open" value
+```
+
+
+Dev Install
+---
+```
+git clone https://github.com/dufolt/dmap
+cd dmap
+npm install -g .
+```
+or
+```
+git clone keybase://team/dmap/dmap
+cd dmap
+npm install -g .
+```
+
+Agenda
+---
+
+* `dmap abi` by address
+* `.` rune
+* `:` rune
 * source bootstrap (git hash on chain, `dmap update` verifies it before linking)
+* `^` rune
+
 

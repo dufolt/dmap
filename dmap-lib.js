@@ -44,7 +44,7 @@ exports.walk = function(root, path, log) {
     var register = root;
     let result = [];
     let step = function(path) {
-        let cmd = `step ${path} -r ${register}`;
+        let cmd = `step -r ${register} ${path}`;
         log(cmd);
         if( register == ""
          || register == constants.ZERO_ADDRESS
