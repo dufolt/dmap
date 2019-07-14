@@ -6,4 +6,5 @@ all:; \
 		--combined-json bin,bin-runtime,abi \
 		--overwrite \
 		-o ../evm \
-		{dmap,xreg,wrap,quickstart}.sol
+		{dmap,xreg,wrap,quickstart}.sol; \
+	npm shrinkwrap;
