@@ -19,21 +19,18 @@ Usage
 > dmap .x.
 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d
 
-> dmap get .x.
+> dmap .x.ample.
 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d
 
-> dmap .x.dmap.
-0x20d20820f5d4d310281533cd9154c1be22d6e195
-
-> dmap walk .x.dmap.
-walk .x.dmap.
-step .x.dmap.
-step -r 0x20d20820f5d4D310281533CD9154C1bE22D6e195 .x.dmap.
+> dmap walk .x.ample.
+walk .x.ample.
+step .x.ample.
+step -r 0x20d20820f5d4D310281533CD9154C1bE22D6e195 .x.ample.
   -> 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d000000000000000000000000
-step -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .dmap.
-  -> 0x20d20820f5d4d310281533cd9154c1be22d6e195000000000000000000000000
-step -r 0x20d20820f5d4d310281533cd9154c1be22d6e195 .
-DONE 0x20d20820f5d4d310281533cd9154c1be22d6e195
+step -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .ample.
+  -> 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6000000000000000000000000
+step -r 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6 .
+DONE 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6
 ```
 
 Example paths
@@ -41,18 +38,19 @@ Example paths
 
 Currently working
 ```
-.            the dmap
-.b.          owned by Mr. B's
-.x.          xreg, the worst registry
-.x.          implicit locks made explicit
-.x.b.        `.b.`
+.             the dmap
+.d.           the dmap
+.x.           xreg, the worst registry (is DMap, owner is XReg)
+.x.ample.     example paths for docs
 ```
-`dpath` musings
+
+Future
 ```
-.b^          Mr. B's
-.x:          xreg, the worst registry
-:x:          implicit locks made explicit
-.x:b         `.b` "open" value
+.b.            rooted by Mr. B's
+.b^            Mr. B's
+
+:x:ample:definitly-locked  
+:x:ample.possibly-mutable 
 ```
 
 
