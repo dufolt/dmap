@@ -12,8 +12,8 @@ function processOptions(options) {
 cli
     .option("-r, --relative <addr>", "execute relative to given address")
 cli
-    .command("[path]")
-    .description("`get [path]`")
+    .command("<path>")
+    .description("`get <path>`")
 cli
     .command("get <path>")
     .description("get the value at the given dmap path")
@@ -36,18 +36,51 @@ cli
             })
             .catch((err) => {console.log(err); });
     })
-/*
 cli
-    .command("abi <type>")
-    .description("Print the ABI for a type known to dmap")
+    .command("type-list")
+    .description("Print a list of known type names")
+    .action(() => {
+        var types = require("./dmap-types");
+        for (t in types) {
+            console.log(t);
+        }
+        process.exit();
+    });
+cli
+    .command("type-abi <type>")
+    .description("Print the ABI for a given type")
     .action((typename) => {
         var types = require("./dmap-types");
         var t = types[typename];
         if (t != undefined) {
-            console.log(JSON.stringify(JSON.parse(t.abi)));
+            console.log(JSON.stringify(t.abi));
         }
+        process.exit();
     });
-*/
+cli
+    .command("type-bin <type>")
+    .description("Print the bytecode for a type")
+    .action((typename) => {
+        var types = require("./dmap-types");
+        var t = types[typename];
+        if (t != undefined) {
+            console.log(t.bin);
+        }
+        process.exit();
+    });
+cli
+    .command("type-rtb <type>")
+    .description("Print the runtime bytecode for a type")
+    .action((typename) => {
+        var types = require("./dmap-types");
+        var t = types[typename];
+        if (t != undefined) {
+            console.log(t.bin);
+        }
+        process.exit();
+    });
+
+
 
 cli.parse(process.argv);
 

@@ -8,3 +8,5 @@ for( key in artifacts) {
 
 // Aliases
 module.exports.dmap = module.exports.DMap
+module.exports.quickstart = module.exports.QuickStart
+module.exports.dwrap = module.exports.DWrap
