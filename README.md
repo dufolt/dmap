@@ -1,9 +1,9 @@
 `dmap`
 ===
 
-`dmap` is a universal namespace defined in terms of the Ethereum chain state.
-`dpath` is the path format and traversal language used by `dmap`. It is designed to be future-proof and extensible.
-`dmap` develops in an ad-hoc manner over time, and knowledge about the structure of the dmap makes its way into clients as optimizations and sometimes language extensions after real use cases motivate them.
+* `dmap` is a universal namespace.
+* `dmap` is a utility for evaluating `dpath`s.
+* `dpath` is a mini-language for traversing a subset of the Ethereum chain state. It is future-proof and extensible.
 
 This repo contains a reference implementation of `dmap` in JavaScript.
 
