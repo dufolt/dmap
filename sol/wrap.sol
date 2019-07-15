@@ -1,4 +1,7 @@
-// control wrapper for individual `DMap`s
+// single-use control wrapper for individual `DMap`s
+// The reference to the wrapped node is preserved even
+// if it is `eject`ed. Calls to `getValue(bytes32)` will
+// will continue to resolve to underlying node.
 
 pragma solidity ^0.5.10;
 
@@ -14,36 +17,37 @@ contract DWrap {
     event TrustUpdate( address indexed caller
                      , bool    indexed trust );
 
-    constructor(DMap node_) public {
-        node = node_;
+    constructor(DMap dmap) public {
         owner = msg.sender;
+        node = dmap;
         emit OwnerUpdate(address(0), address(this));
     }
-    function authorize(address caller) internal view {
+    function auth(address caller) internal view {
         assert(caller == owner || trusts[caller]);
     }
-    function write(bytes32 key, bytes32 value) public {
-        authorize(msg.sender);
-        node.setValue(key, value);
-    }
-    function give(address to) public {
-        authorize(msg.sender);
-        emit OwnerUpdate(owner, to);
-        owner = to;
-    }
     function trust(address a, bool b) public {
-        authorize(msg.sender);
+        auth(msg.sender);
         trusts[a] = b;
     }
+    function getValue(bytes32 key) public view returns (bytes32) {
+        return node.getValue(key);
+    }
+    function setValue(bytes32 key, bytes32 value) public {
+        auth(msg.sender);
+        node.setValue(key, value);
+    }
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+    function setOwner(address newOwner) public {
+        auth(msg.sender);
+        emit OwnerUpdate(owner, newOwner);
+        owner = newOwner;
+    }
     function eject() public returns (DMap) {
-        DMap ret = node;
-        authorize(msg.sender);
+        auth(msg.sender);
+        owner = address(0);
         node.setOwner(msg.sender);
-        // Decommission this DWrap
-            emit OwnerUpdate(address(this), address(0));
-            node = DMap(address(0));
-            owner = address(0);
-        // whew
-        return ret;
+        return node;
     }
 }
