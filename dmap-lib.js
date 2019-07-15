@@ -9,11 +9,11 @@ exports.isDPath = function(path) {
     return exports.dPathRegex.test(path);
 }
 
-exports.get = function(path, log) {
+exports.read = function(path, log) {
     if( log == undefined ) {
         log = console.log;
     }
-    log(`get ${path}`)
+    log(`read ${path}`)
     if( !exports.isDPath(path) ) {
         let mustStart = path[0] == "."
                       ? ""
@@ -34,20 +34,19 @@ exports.walk = function(root, path, log) {
         log = console.log;
     }
     log(`walk ${path}`)
+    log(`step read ${path}`)
     if( !exports.isDPath(path) ) {
         return Promise.reject("Invalid path");
     }
-    log(`step ${path}`)
     if( root == undefined || root == "" || root == "0x0") {
         root = exports.context.relative;
     }
     var register = root;
     let result = [];
     let step = function(path) {
-        let cmd = `step -r ${register} ${path}`;
+        let cmd = `step read -r ${register} ${path}`;
         log(cmd);
-        if( register == ""
-         || register == constants.ZERO_ADDRESS
+        if( register == constants.ZERO_ADDRESS
          || register == constants.ZERO_BYTES32 )
         {
             let fail = `FAIL ${cmd}`;
@@ -64,7 +63,7 @@ exports.walk = function(root, path, log) {
         let rest = path.slice(rune.length+word.length, path.length);
         return exports.getValue(register, word)
             .then((result) => {
-                log(`  -> ${result}`);
+                log(`  <- ${result}`);
                 if (rest == "") {
                     return Promise.reject("UNREACHABLE");
                 }

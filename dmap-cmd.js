@@ -13,14 +13,14 @@ cli
     .option("-r, --relative <addr>", "execute relative to given address")
 cli
     .command("<path>")
-    .description("`get <path>`")
+    .description("`read <path>`")
 cli
-    .command("get <path>")
+    .command("read <path>")
     .description("get the value at the given dmap path")
     .action((path, options) => {
         var logger = () => {};
         processOptions(options.parent);
-        dmap.get(path, logger)
+        dmap.read(path, logger)
             .then(console.log)
             .then(process.exit)
             .catch((err) => { console.log(err); });
@@ -87,7 +87,7 @@ cli.parse(process.argv);
 if (cli.args.length == 1) {
     processOptions(cli.options);
     var logger = () => {};
-    dmap.get(cli.args[0], logger)
+    dmap.read(cli.args[0], logger)
         .then(console.log)
         .then(process.exit)
         .catch((err) => {console.log(err); });

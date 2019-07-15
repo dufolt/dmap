@@ -37,11 +37,12 @@ Examples
 > dmap walk .x.ample.
 walk .x.ample.
 step .x.ample.
-step -r 0x20d20820f5d4D310281533CD9154C1bE22D6e195 .x.ample.
+step read .x.ample.
+step read -r 0x20d20820f5d4D310281533CD9154C1bE22D6e195 .x.ample.
   -> 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d000000000000000000000000
-step -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .ample.
+step read -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .ample.
   -> 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6000000000000000000000000
-step -r 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6 .
+step read -r 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6 .
 DONE 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6
 ```
 
