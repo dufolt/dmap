@@ -48,15 +48,15 @@ dmap .myKey. -r 0x...<yourDMapAddress>
 
 You can point a key to another DMap to get subpaths
 
-`# In a wallet:  yourDMap.setValue("subKey", subMapAddress)`
-
 ```
+# In a wallet:  yourDMap.setValue("subKey", subMapAddress)
 dmap .myKey.subKey. -r 0x...<yourDMapAddress>
 ```
 
 Finally, you can register it with `.x.`. Remember, you don't `setValue` on `.x.`, you
 `register` on `.x.reg.`.
 
-`# In a wallet: xreg.register(yourname, yourDMapAddress)`
-
+```
+# In a wallet: xreg.register(yourname, yourDMapAddress)
 `dmap .yourname.myKey.subKey.`
+```
