@@ -2,8 +2,8 @@
 ===
 
 * `dmap` is a universal namespace defined by part of the Ethereum chain state.
+* `dmap <dpath>` gets the 32-byte value at the given path.
 * `dpath` is the path format and mini-language used by `dmap`.
-* `dmap` maps `dpath`s to 32-byte words.
 * `dpath` is future-proof and extensible.
 
 Try it now:

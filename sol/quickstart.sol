@@ -1,6 +1,5 @@
 // A factory that logs DMap and DWrap creation events
-// All spec-compliant DMaps are valid,
-// even if they are not constructed here
+// All DMaps are valid, even if they are not constructed here
 
 pragma solidity ^0.5.10;
 
@@ -29,7 +28,7 @@ contract QuickStart {
         emit NewDWrap(wrap);
 
         node.setOwner(address(wrap));
-        wrap.give(msg.sender);
+        wrap.setOwner(msg.sender);
         return wrap;
     }
 
@@ -38,8 +37,9 @@ contract QuickStart {
 
         emit NewDWrap(wrap);
     
-        wrap.give(msg.sender);
+        wrap.setOwner(msg.sender);
         return wrap;
+    
         // Now caller should call `node.setOwner(wrap)`
         // IE
         //    var node = ...
