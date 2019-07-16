@@ -15,17 +15,18 @@ dmap type-abi XReg
 
 For convenience, the registrar is itself registered at `.x.reg.`
 
-*Warning: `.x.` values are immutable. If you register a dmap at `.x.ample.`, you will be able to update `.x.ample.subname.`, but `.x.ample.` will always return the dmap you just registered.*
+*Warning: `.x.` values are immutable. If you register a dmap at `.x.ample.`, you will be able to update `.x.ample.subname.`, but `.x.ample.` will always return the same value.*
 
 ![Accessing `.x.` registrar via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/xreg-access.png)
 ![Calling `newChild` on `.x.` registrar via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/xreg-newchild.png)
 
-*Note: For now, stick with lowercase letters and numbers (that is, ascii-encoded, left-aligned (most significant byte first)).* DMaps accept any bytes32 as a key, but not all keys are queryable by `dmap`. Stand by for documentation about the `dpath` format/language. 
+*Note: For now, stick with lowercase letters, numbers, and hyphens (ascii-encoded, left-aligned (most significant byte first)).* DMaps accept any bytes32 as a key, but not all keys are queryable by `dmap`. Stand by for documentation about the `dpath` format/language. 
 
-*Note: You can use `.x.` to store arbitrary values, including existing DMaps, by using `register(key, value)`. In this guide we assumed you will want to register a fresh DMap so you can write to its subpaths.*
+*Note: You can use `.x.` to store arbitrary values, including existing DMaps, by using `register(key, value)`. In this guide we assumed you want to call `newChild` to create a fresh DMap so you can write to its subpaths.*
 
 ### 2) Write to your DMap with `setValue(bytes32 key)`
 
+Get the ABI for `DMap`:
 ```
 dmap type-abi DMap
 ```
@@ -35,12 +36,13 @@ dmap type-abi DMap
 
 ### 3) Standalone DMaps
 
+Get the contract bytecode for `DMap`:
 ```
 dmap type-bin DMap
 ```
 
 You don't need to use a particular contract to join the dmap system. You can
-deploy a DMap directly, or anything else that implements `getValue(bytes32)`.
+deploy a DMap directly, or anything else that implements `getValue(bytes32) returns (bytes32)`.
 
 You can begin a query at any address using the "relative" flag (`-r`):
 
