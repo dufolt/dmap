@@ -63,7 +63,7 @@ exports.walk = function(root, path, log) {
         let rest = path.slice(rune.length+word.length, path.length);
         return exports.getValue(register, word)
             .then((result) => {
-                log(`  <- ${result}`);
+                log(`     ${result}`);
                 if (rest == "") {
                     return Promise.reject("UNREACHABLE");
                 }

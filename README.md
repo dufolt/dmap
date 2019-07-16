@@ -10,9 +10,12 @@ Try it now:
 ---
 ```
 npm install -g dmap-cmd
-dmap .x.ample.
-dmap walk .x.ample.
+
+dmap .x.ample.        # Query
+dmap walk .x.ample.   # Details
 ```
+
+Follow the [quickstart](https://github.com/dufolt/dmap/blob/master/doc/quickstart.md) guide to start naming things. If you want a valuable name, you should create a valuable namespace.
 
 Use Cases
 ---
@@ -39,9 +42,9 @@ walk .x.ample.
 step .x.ample.
 step read .x.ample.
 step read -r 0x20d20820f5d4D310281533CD9154C1bE22D6e195 .x.ample.
-  -> 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d000000000000000000000000
+     0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d000000000000000000000000
 step read -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .ample.
-  -> 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6000000000000000000000000
+     0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6000000000000000000000000
 step read -r 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6 .
 DONE 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6
 ```
@@ -63,9 +66,10 @@ Future
 :x:ample:definitly-locked  
 :x:ample.possibly-mutable 
 .x.ample#ipld
+.x.foo@.
+.x.foo@@@.
+.x.foo%bar.
 ```
-
-
 Development Notes
 ---
 

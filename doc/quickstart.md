@@ -1,4 +1,4 @@
-DMap Quickstart: Register a DMap at `.x.<name>.`
+`dmap .x.<yourname>`
 ===
 
 `dmap` is a read-only utility. It might eventually go as far as generating unsigned
