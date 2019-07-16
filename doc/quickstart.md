@@ -20,7 +20,7 @@ For convenience, the registrar is itself registered at `.x.reg.`
 ![Accessing `.x.` registrar via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/xreg-access.png)
 ![Calling `newChild` on `.x.` registrar via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/xreg-newchild.png)
 
-*Note: DMaps accept any bytes32 as a key, but not all keys are queryable by `dmap`. Stand by for documentation about the `dpath` format/language. For now, stick with lowercase letters and numbers (that is, ascii-encoded, left-aligned (most significant byte first)).*
+*Note: For now, stick with lowercase letters and numbers (that is, ascii-encoded, left-aligned (most significant byte first)).* DMaps accept any bytes32 as a key, but not all keys are queryable by `dmap`. Stand by for documentation about the `dpath` format/language. 
 
 *Note: You can use `.x.` to store arbitrary values, including existing DMaps, by using `register(key, value)`. In this guide we assumed you will want to register a fresh DMap so you can write to its subpaths.*
 
