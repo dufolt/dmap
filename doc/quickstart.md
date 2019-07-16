@@ -4,6 +4,7 @@
 `dmap` is a read-only utility. It might eventually go as far as generating unsigned
 transactions, but it will always delegate key management to another tool (e.g. `ethsign`). We included screenshots of MyEtherWallet.
 
+### 1) Call `createChild(bytes32 name)` on the `xreg` contract
 
 ```
 dmap .x.reg.
@@ -11,8 +12,6 @@ dmap .x.reg.
 dmap type-abi XReg
 # Note this ABI
 ```
-
-### 1) Call `createChild(bytes32 name)` on the `xreg` contract
 
 For convenience, the registrar is itself registered at `.x.reg.`
 
