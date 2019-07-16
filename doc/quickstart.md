@@ -1,8 +1,8 @@
 `dmap .x.<yourname>.`
 ===
 
-`dmap` is a read-only utility. It might eventually go as far as generating unsigned
-transactions, but it will always delegate key management to another tool (e.g. `ethsign`). We included screenshots of MyEtherWallet.
+*Note: `dmap` is a read-only utility. It might eventually go as far as generating unsigned
+transactions, but it will always delegate key management to another tool (e.g. `ethsign`). We included screenshots of MyEtherWallet.*
 
 ### 1) Call `createChild(bytes32 name)` on the `xreg` contract
 
@@ -20,6 +20,7 @@ For convenience, the registrar is itself registered at `.x.reg.`
 IMG
 
 *Note: DMaps accept any bytes32 as a key, but not all keys are queryable by `dmap`. Stand by for documentation about the `dpath` format/language. For now, stick with lowercase letters and numbers (that is, ascii-encoded, left-aligned (most significant byte first)).*
+
 *Note: You can use `.x.` to store arbitrary values, including existing DMaps, by using `register(key, value)`. In this guide we assumed you will want to register a fresh DMap so you can write to its subpaths.*
 
 ### 2) Write to your DMap with `setValue(bytes32 key)`
