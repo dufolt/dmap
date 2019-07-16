@@ -1,4 +1,4 @@
-`dmap .x.<yourname>.<yourReceivingAddress>.`
+`dmap .x.<yourname>.`
 ===
 
 `dmap` is a read-only utility. It might eventually go as far as generating unsigned

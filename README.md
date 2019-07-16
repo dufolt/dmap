@@ -15,7 +15,7 @@ dmap .x.ample.        # Query
 dmap walk .x.ample.   # Details
 ```
 
-#### [Quickstart: `dmap .x.yourName.yourReceivingAddress.`](https://github.com/dufolt/dmap/blob/master/doc/quickstart.md)
+#### [Quickstart on `.x.`: `dmap .x.yourName.`](https://github.com/dufolt/dmap/blob/master/doc/quickstart.md)
 
 If you want a valuable name, you should make a valuable namespace.
 
