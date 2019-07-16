@@ -15,7 +15,9 @@ dmap .x.ample.        # Query
 dmap walk .x.ample.   # Details
 ```
 
-Follow the [quickstart](https://github.com/dufolt/dmap/blob/master/doc/quickstart.md) guide to start naming things. If you want a valuable name, you should create a valuable namespace.
+#### [Quickstart: `dmap .x.yourName.yourReceivingAddress.`](https://github.com/dufolt/dmap/blob/master/doc/quickstart.md)
+
+If you want a valuable name, you should make a valuable namespace.
 
 Use Cases
 ---
