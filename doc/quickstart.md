@@ -17,7 +17,8 @@ For convenience, the registrar is itself registered at `.x.reg.`
 
 *Warning: `.x.` values are immutable. If you register a dmap at `.x.ample.`, you will be able to update `.x.ample.subname.`, but `.x.ample.` will always return the dmap you just registered.*
 
-IMG
+![Accessing `.x.` registrar via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/xreg-access.png)
+![Calling `newChild` on `.x.` registrar via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/xreg-newchild.png)
 
 *Note: DMaps accept any bytes32 as a key, but not all keys are queryable by `dmap`. Stand by for documentation about the `dpath` format/language. For now, stick with lowercase letters and numbers (that is, ascii-encoded, left-aligned (most significant byte first)).*
 
@@ -29,7 +30,8 @@ IMG
 dmap type-abi DMap
 ```
 
-IMG
+![Accessing a DMap via MyEtherWallet](https://dufolt.github.io/dmap/doc/img/dmap-access.png)
+![Calling `setValue` on a DMap MyEtherWallet](https://dufolt.github.io/dmap/doc/img/dmap-setvalue.png)
 
 ### 3) Standalone DMaps
 
