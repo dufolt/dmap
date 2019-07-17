@@ -45,8 +45,8 @@ Use Cases
 
 Our goal is to make `dmap` usable for the following initial use cases as quickly as possible.
 
-* Package verification
-* GUI distribution verification
+* Package integrity check
+* GUI integrity check
 * Key signing / WoT bootstrapping
 
 Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
