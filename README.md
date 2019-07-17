@@ -19,17 +19,6 @@ dmap walk .x.ample.   # Details
 
 If you want a valuable name, you should make a valuable namespace.
 
-Use Cases
----
-
-`dmap` should be immediately useful for:
-
-* Package distribution (verification)
-* GUI distribution (verification)
-* Key signing / WoT bootstrapping
-
-Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
-
 Examples
 ---
 ```
@@ -50,6 +39,38 @@ step read -r 0x180513ff7459ebc79534d3cb8ac26a5a1ac8af0d .ample.
 step read -r 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6 .
 DONE 0xdbb5fbdfdf8f2f87f94f28cbd3cacf3ad28cfda6
 ```
+
+Use Cases
+---
+
+Our goal is to make `dmap` usable for the following initial use cases as quickly as possible.
+
+* Package verification
+* GUI distribution verification
+* Key signing / WoT bootstrapping
+
+Any time you sign an update to a "named something", you could be signing it with a multisig or any other smart contract.
+
+Development Notes
+---
+
+* **At its core, this project is about `dpath` semantics.**
+* Version 0.0.x has an unstable API. Version 0.1.0 will have a stable `read` and `walk` API for paths containing only `.` runes (separators).
+* `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk().x.ample.path()` helper methods second.
+* We expect other implementations to be forks of Ethereum light clients optimized for dmap queries.
+
+```
+git clone https://github.com/dufolt/dmap
+cd dmap
+make
+```
+or
+```
+git clone keybase://team/dmap/dmap
+cd dmap
+make
+```
+
 
 Example paths to study
 ---
@@ -72,25 +93,6 @@ Future
 .x.foo@@@.
 .x.foo%bar.
 ```
-Development Notes
----
-
-* Version 0.0.x has an unstable API. Version 0.1.0 will have a stable `get` and `walk` API for paths containing only `.` runes (separators).
-* `dmap` command line commands define a query language. `dmap` libraries should implement `dmap("walk .x.ample.path").` first and `.walk(path)` helper methods second.
-* We expect other implementations to be forks of Ethereum light clients optimized for dmap queries.
-
-```
-git clone https://github.com/dufolt/dmap
-cd dmap
-make
-```
-or
-```
-git clone keybase://team/dmap/dmap
-cd dmap
-make
-```
-
 
 
 Agenda
