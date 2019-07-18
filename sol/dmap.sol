@@ -25,11 +25,11 @@ contract DMap is ValueProvider {
         emit ValueUpdate(key, value);
     }
     function getOwner() public view returns (address) {
-        return owner;
+        return _owner;
     }
     function setOwner(address newOwner) public {
-        assert(msg.sender == owner);
-        owner = newOwner;
-        emit OwnerUpdate(msg.sender, owner);
+        assert(msg.sender == _owner);
+        _owner = newOwner;
+        emit OwnerUpdate(msg.sender, _owner);
     }
 }

@@ -1,5 +1,7 @@
+pragma solidity ^0.5.10;
+
 contract ValueProvider {
-    function getValue(bytes32 key) view returns (bytes32 value);
+    function getValue(bytes32 key) public view returns (bytes32 value);
 }
 
 // Ideas for when this needs a real name:
