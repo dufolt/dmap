@@ -7,7 +7,6 @@ contract DMap2 is ValueProvider {
     mapping(address=>bool)     public trusts;
     mapping(bytes32=>bytes32)  public values;
 
-
     event ValueUpdate( bytes32 indexed key
                      , bytes32 indexed value );
     event OwnerUpdate( address indexed oldOwner
@@ -17,17 +16,16 @@ contract DMap2 is ValueProvider {
         owner = msg.sender;
         emit OwnerUpdate(address(0), owner);
     }
+    function auth() internal {
+        assert(msg.sender == owner || trusts[msg.sender]);
+    }
     function getValue(bytes32 key) public view returns (bytes32) {
         return values[key];
     }
     function getOwner() public view returns (address) {
         return owner;
     }
-
-    function auth() internal {
-        assert(msg.sender == owner || trusts[msg.sender]);
-    }
-    function trust(address who, bool t) {
+    function trust(address who, bool t) public {
         auth();
         trusts[who] = t;
     }
@@ -41,5 +39,4 @@ contract DMap2 is ValueProvider {
         owner = newOwner;
         emit OwnerUpdate(msg.sender, owner);
     }
-
 }
