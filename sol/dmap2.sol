@@ -5,12 +5,15 @@ import 'interface/ValueProvider.sol';
 contract DMap2 is ValueProvider {
     address                    public owner;
     mapping(address=>bool)     public trusts;
+    mapping(bytes32=>bool)     public locked;
     mapping(bytes32=>bytes32)  public values;
 
-    event ValueUpdate( bytes32 indexed key
-                     , bytes32 indexed value );
     event OwnerUpdate( address indexed oldOwner
                      , address indexed newOwner );
+    event ValueUpdate( bytes32 indexed key
+                     , bytes32 indexed value );
+    event ValueLocked( bytes32 indexed key
+                     , bytes32 indexed value );
 
     constructor() public {
         owner = msg.sender;
@@ -29,8 +32,20 @@ contract DMap2 is ValueProvider {
         auth();
         trusts[who] = t;
     }
+    function lock(bytes32 key, bytes32 value) public {
+        auth();
+        assert( ! locked[key]);
+        values[key] = value;
+        locked[key] = true;
+        emit ValueUpdate(key, value);
+        emit ValueLocked(key, value); // yes 2 events
+    }
+    function lock(bytes32 key) public {
+        lock(key, values[key]);
+    }
     function setValue(bytes32 key, bytes32 value) public {
         auth();
+        assert( ! locked[key] );
         values[key] = value;
         emit ValueUpdate(key, value);
     }
