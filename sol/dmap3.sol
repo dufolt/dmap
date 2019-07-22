@@ -20,7 +20,10 @@ contract DMap3 is ValueProvider {
     constructor() public {
         allocator = msg.sender;
     }
-
+    function setAllocator(address newAllocator) public {
+        assert(msg.sender == allocator);
+        allocator = newAllocator;
+    }
     function allocate(bytes32 key, address owner) public {
         assert( ! locked[key]);
         assert(msg.sender == allocator);
@@ -28,10 +31,6 @@ contract DMap3 is ValueProvider {
         assert(owners[key] != address(0));
         owners[key] = owner;
         emit OwnerUpdate(key, address(this), owner);
-    }
-    function setAllocator(address newAllocator) public {
-        assert(msg.sender == allocator);
-        allocator = newAllocator;
     }
     function lock(bytes32 key) public {
         assert( ! locked[key]); // one lock event
@@ -49,6 +48,7 @@ contract DMap3 is ValueProvider {
     function accept(bytes32 key) public {
         assert( ! locked[key]);
         assert(msg.sender == offered[key]);
+        emit OwnerUpdate(key, owners[key], offered[key]);
         owners[key] = msg.sender;
         offered[key] = address(0);
     }
@@ -58,7 +58,6 @@ contract DMap3 is ValueProvider {
         values[key] = value;
         emit ValueUpdate(key, value);
     }
-    // ValueProvider
     function getValue(bytes32 key) public view returns (bytes32) { 
         return values[key];
     }
