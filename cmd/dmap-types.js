@@ -5,9 +5,3 @@ for( key in artifacts) {
     module.exports[name[1]] = artifacts[key];
     module.exports[name[1]].abi = JSON.parse(artifacts[key].abi);
 }
-
-// Aliases
-module.exports.dmap = module.exports.DMap
-module.exports.quickstart = module.exports.QuickStart
-module.exports.dwrap = module.exports.DWrap
-module.exports.XReg = module.exports.xreg
