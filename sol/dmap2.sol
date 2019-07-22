@@ -39,3 +39,15 @@ contract DMap2 is ValueProvider {
         emit TrustUpdate(who, t);
     }
 }
+
+contract DMap2Factory {
+    function build() public returns (DMap2) {
+        return build(msg.sender);
+    }
+    function build(address owner) public returns (DMap2) {
+        DMap2 dmap2 = new DMap2();
+        dmap2.trust(owner, true);
+        dmap2.trust(address(this), false);
+        return dmap2;
+    }
+}
