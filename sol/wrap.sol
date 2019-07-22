@@ -5,7 +5,7 @@
 
 pragma solidity ^0.5.10;
 
-import 'dmap.sol';
+import './dmap.sol';
 
 contract DWrap {
     DMap                   public node;

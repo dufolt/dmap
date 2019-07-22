@@ -3,7 +3,7 @@
 
 pragma solidity ^0.5.10;
 
-import 'wrap.sol';
+import './wrap.sol';
 
 contract QuickStart {
 

@@ -1,10 +1,10 @@
 {
   "name": "dmap-cmd",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "",
-  "main": "dmap-lib",
+  "main": "./cmd/dmap-lib",
   "bin": {
-    "dmap": "./dmap-cmd.js"
+    "dmap": "./cmd/dmap-cmd.js"
   },
   "dependencies": {
     "commander": "^2.20.0",
