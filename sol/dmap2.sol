@@ -21,10 +21,11 @@ contract DMap2 is ValueProvider {
     function getValue(bytes32 key) public view returns (bytes32) {
         return values[key];
     }
-    function trust(address who, bool t) public {
+    function setValue(bytes32 key, bytes32 value) public {
         assert(trusts[msg.sender]);
-        trusts[who] = t;
-        emit TrustUpdate(who, t);
+        assert( ! locked[key] );
+        values[key] = value;
+        emit ValueUpdate(key, value);
     }
     function lock(bytes32 key) public {
         assert(trusts[msg.sender]);
@@ -32,10 +33,9 @@ contract DMap2 is ValueProvider {
         locked[key] = true;
         emit ValueLocked(key, values[key]);
     }
-    function setValue(bytes32 key, bytes32 value) public {
+    function trust(address who, bool t) public {
         assert(trusts[msg.sender]);
-        assert( ! locked[key] );
-        values[key] = value;
-        emit ValueUpdate(key, value);
+        trusts[who] = t;
+        emit TrustUpdate(who, t);
     }
 }
