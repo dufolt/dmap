@@ -6,5 +6,5 @@ all:; \
 	--overwrite \
 	/=/ \
 	-o evm \
-	sol/{dmap,dmap2,wrap,xreg,quickstart}.sol \
+	sol/{dmap,dmap2,dmap3,wrap,xreg,quickstart}.sol \
 ;
