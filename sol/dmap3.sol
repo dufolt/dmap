@@ -4,10 +4,10 @@ import './ValueProvider.sol';
 
 contract DMap3 is ValueProvider {
     address                   public allocator;
+    mapping(bytes32=>bool)    public locked;
     mapping(bytes32=>bytes32) public values;
     mapping(bytes32=>address) public owners;
     mapping(bytes32=>address) public offered;
-    mapping(bytes32=>bool)    public locked;
 
     event ValueUpdate( bytes32 indexed key
                      , bytes32 indexed value );
