@@ -76,7 +76,7 @@ exports.walk = function(root, path, log) {
 
 exports.getValue = function(map, key) {
     var web3 = new Web3(exports.context.bootstrap);
-    var dmap = new web3.eth.Contract(constants.types.dmap.abi, map);
+    var dmap = new web3.eth.Contract(constants.types.DMap.abi, map);
     return dmap.methods
         .getValue(web3.utils.asciiToHex(key))
         .call()

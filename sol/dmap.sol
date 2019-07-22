@@ -1,8 +1,10 @@
 pragma solidity ^0.5.10;
 
-contract DMap {
-    address                    public getOwner;
-    mapping(bytes32=>bytes32)  public getValue;
+import './ValueProvider.sol';
+
+contract DMap is ValueProvider {
+    address                    private _owner;
+    mapping(bytes32=>bytes32)  private _values;
 
     event ValueUpdate( bytes32 indexed key
                      , bytes32 indexed value );
@@ -10,18 +12,24 @@ contract DMap {
                      , address indexed newOwner );
 
     constructor() public {
-        getOwner = msg.sender;
-        emit OwnerUpdate(address(0), getOwner);
+        _owner = msg.sender;
+        emit OwnerUpdate(address(0), _owner);
     }
 
+    function getValue(bytes32 key) public view returns (bytes32) {
+        return _values[key];
+    }
     function setValue(bytes32 key, bytes32 value) public {
-        assert(msg.sender == getOwner);
-        getValue[key] = value;
+        assert(msg.sender == _owner);
+        _values[key] = value;
         emit ValueUpdate(key, value);
     }
+    function getOwner() public view returns (address) {
+        return _owner;
+    }
     function setOwner(address newOwner) public {
-        assert(msg.sender == getOwner);
-        getOwner = newOwner;
-        emit OwnerUpdate(msg.sender, getOwner);
+        assert(msg.sender == _owner);
+        _owner = newOwner;
+        emit OwnerUpdate(msg.sender, _owner);
     }
 }

@@ -1,10 +1,10 @@
 all:; \
-	cd sol; \
-		solc \
-		--optimize \
-		--pretty-json \
-		--combined-json bin,bin-runtime,abi \
-		--overwrite \
-		-o ../evm \
-		{dmap,xreg,wrap,quickstart}.sol; \
-	npm shrinkwrap;
+	solc \
+	--optimize \
+	--pretty-json \
+	--combined-json bin,bin-runtime,abi \
+	--overwrite \
+	/=/ \
+	-o evm \
+	sol/{dmap,dmap2,dmap3,wrap,xreg,quickstart}.sol \
+;
