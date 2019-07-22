@@ -26,16 +26,11 @@ contract DMap2 is ValueProvider {
         trusts[who] = t;
         emit TrustUpdate(who, t);
     }
-    function lock(bytes32 key, bytes32 value) public {
+    function lock(bytes32 key) public {
         assert(trusts[msg.sender]);
         assert( ! locked[key]);
-        values[key] = value;
         locked[key] = true;
-        emit ValueLocked(key, value);
-        emit ValueUpdate(key, value); // Redundant event as ValueProvider
-    }
-    function lock(bytes32 key) public {
-        lock(key, values[key]);
+        emit ValueLocked(key, values[key]);
     }
     function setValue(bytes32 key, bytes32 value) public {
         assert(trusts[msg.sender]);
