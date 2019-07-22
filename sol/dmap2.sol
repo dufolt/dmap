@@ -3,55 +3,44 @@ pragma solidity ^0.5.10;
 import './ValueProvider.sol';
 
 contract DMap2 is ValueProvider {
-    address                    public owner;
-    mapping(address=>bool)     public trusts;
+    mapping(address=>bool)     public trusts; // Full owner-like
     mapping(bytes32=>bool)     public locked;
     mapping(bytes32=>bytes32)  public values;
 
-    event OwnerUpdate( address indexed oldOwner
-                     , address indexed newOwner );
     event ValueUpdate( bytes32 indexed key
                      , bytes32 indexed value );
     event ValueLocked( bytes32 indexed key
                      , bytes32 indexed value );
+    event TrustUpdate( address indexed who
+                     , bool    indexed trust );
 
     constructor() public {
-        owner = msg.sender;
-        emit OwnerUpdate(address(0), owner);
-    }
-    function auth() internal {
-        assert(msg.sender == owner || trusts[msg.sender]);
+        trusts[msg.sender] = true;
+        emit TrustUpdate(msg.sender, true);
     }
     function getValue(bytes32 key) public view returns (bytes32) {
         return values[key];
     }
-    function getOwner() public view returns (address) {
-        return owner;
-    }
     function trust(address who, bool t) public {
-        auth();
+        assert(trusts[msg.sender]);
         trusts[who] = t;
+        emit TrustUpdate(who, t);
     }
     function lock(bytes32 key, bytes32 value) public {
-        auth();
+        assert(trusts[msg.sender]);
         assert( ! locked[key]);
         values[key] = value;
         locked[key] = true;
-        emit ValueUpdate(key, value);
-        emit ValueLocked(key, value); // yes 2 events
+        emit ValueLocked(key, value);
+        emit ValueUpdate(key, value); // Redundant event as ValueProvider
     }
     function lock(bytes32 key) public {
         lock(key, values[key]);
     }
     function setValue(bytes32 key, bytes32 value) public {
-        auth();
+        assert(trusts[msg.sender]);
         assert( ! locked[key] );
         values[key] = value;
         emit ValueUpdate(key, value);
-    }
-    function setOwner(address newOwner) public {
-        auth();
-        owner = newOwner;
-        emit OwnerUpdate(msg.sender, owner);
     }
 }

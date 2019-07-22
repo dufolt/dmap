@@ -5,6 +5,6 @@ all:; \
 	--combined-json bin,bin-runtime,abi \
 	--overwrite \
 	/=/ \
-	-o .evm \
+	-o evm \
 	sol/{dmap,dmap2,wrap,xreg,quickstart}.sol \
 ;
