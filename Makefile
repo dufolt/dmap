@@ -6,5 +6,7 @@ all:; \
 	--overwrite \
 	/=/ \
 	-o .evm \
-	sol/{dmap,dmap2,xreg,wrap,quickstart}.sol; \
-	npm shrinkwrap;
+	sol/{dmap,dmap2,wrap,xreg,quickstart}.sol \
+;
+
+publish:; npm shrinkwrap;

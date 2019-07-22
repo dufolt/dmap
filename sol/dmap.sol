@@ -1,6 +1,6 @@
 pragma solidity ^0.5.10;
 
-import './interface/ValueProvider.sol';
+import './ValueProvider.sol';
 
 contract DMap is ValueProvider {
     address                    private _owner;
