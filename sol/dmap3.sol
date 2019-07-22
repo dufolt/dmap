@@ -67,9 +67,9 @@ contract DMap3Factory {
     function build() public returns (DMap3) {
         return build(msg.sender);
     }
-    function build(address owner) public returns (DMap3) {
+    function build(address allocator) public returns (DMap3) {
         DMap3 dmap3 = new DMap3();
-        dmap3.setAllocator(owner);
+        dmap3.setAllocator(allocator);
         return dmap3;
     }
 }
